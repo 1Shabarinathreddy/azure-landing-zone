@@ -53,3 +53,28 @@ variable "log_retention_days" {
   type        = number
   default     = 30
 }
+
+
+variable "hub_vnet_address_space" {
+  description = "address space for the hub virtual network"
+  type        = string
+  default     = "10.0.0.0/16"
+}
+
+variable "gateway_subnet_cidr" {
+  description = "CIDR for the gateway subnet"
+  type        = string
+  default     = "10.0.1.0/27"
+}
+
+variable "firewall_subnet_cidr" {
+  description = "CIDR for the firewall subnet"
+  type        = string
+  default     = "10.0.2.0/26"
+}
+
+variable "bastion_subnet_cidr" {
+  description = "CIDR for the bastion subnet"
+  type        = string
+  default     = "10.0.3.0/27"
+}

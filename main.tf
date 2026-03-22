@@ -37,3 +37,19 @@ module "logging" {
   log_retention_days          = var.log_retention_days
   tags                        = var.tags
 }
+
+
+# Networking 
+
+module "networking" {
+  source = "./modules/networking"
+
+  location                   = var.location
+  environment                = var.environment
+  hub_vnet_address_space     = var.hub_vnet_address_space
+  gateway_subnet_cidr        = var.gateway_subnet_cidr
+  firewall_subnet_cidr       = var.firewall_subnet_cidr
+  bastion_subnet_cidr        = var.bastion_subnet_cidr
+  log_analytics_workspace_id = module.logging.log_analytics_workspace_id
+  tags                       = var.tags
+}
