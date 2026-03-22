@@ -27,3 +27,13 @@ module "management_groups" {
   root_management_group_name = var.root_management_group_name
   management_group_hierarchy = var.management_group_hierarchy
 }
+
+module "logging" {
+  source = "./modules/logging"
+
+  location                    = var.location
+  environment                 = var.environment
+  log_analytics_workspace_sku = var.log_analytics_workspace_sku
+  log_retention_days          = var.log_retention_days
+  tags                        = var.tags
+}

@@ -42,3 +42,14 @@ variable "tags" {
     managed_by  = "terraform"
   }
 }
+variable "log_analytics_workspace_sku" {
+  description = "SKU for log analytics workspace"
+  type        = string
+  default     = "PerGB2018"
+}
+
+variable "log_retention_days" {
+  description = "number of days to retain logs"
+  type        = number
+  default     = 30
+}
