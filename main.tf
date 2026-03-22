@@ -53,3 +53,16 @@ module "networking" {
   log_analytics_workspace_id = module.logging.log_analytics_workspace_id
   tags                       = var.tags
 }
+
+
+# Policys
+
+module "policy" {
+  source = "./modules/policy"
+
+  root_management_group_id         = module.management_groups.root_management_group_id
+  landing_zone_management_group_id = module.management_groups.landing_zone_management_group_id
+  allowed_locations                = var.allowed_locations
+  environment                      = var.environment
+  tags                             = var.tags
+}

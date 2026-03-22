@@ -78,3 +78,9 @@ variable "bastion_subnet_cidr" {
   type        = string
   default     = "10.0.3.0/27"
 }
+
+variable "allowed_locations" {
+  description = "list of azure regions where resources are allowed"
+  type        = list(string)
+  default     = ["eastus", "eastus2", "westus"]
+}
