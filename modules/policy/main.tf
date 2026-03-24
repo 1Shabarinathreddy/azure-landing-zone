@@ -70,3 +70,26 @@ resource "azurerm_policy_definition" "mandatory_tags" {
 
   parameters = jsonencode({})
 }
+
+
+# assigned  locations policy to root management group
+
+resource "azurerm_management_group_policy_assignment" "allowed_locations" {
+  name                 = "allow-locations"
+  policy_definition_id = azurerm_policy_definition.allowed_locations.id
+  management_group_id  = var.root_management_group_id
+
+  parameters = jsonencode({
+    allowedLocations = {
+      value = var.allowed_locations
+    }
+  })
+}
+
+# assign mandatory tags policy to landing zones management group
+
+resource "azurerm_management_group_policy_assignment" "mandatory_tags" {
+  name                 = "mandatory-tags"
+  policy_definition_id = azurerm_policy_definition.mandatory_tags.id
+  management_group_id  = var.landing_zone_management_group_id
+}
