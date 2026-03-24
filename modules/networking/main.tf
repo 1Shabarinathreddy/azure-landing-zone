@@ -33,6 +33,8 @@ resource "azurerm_subnet" "bastion" {
   address_prefixes     = [var.bastion_subnet_cidr]
 }
 
+# bastion NSG needs specific rules to allow Azure control plane traffic
+
 resource "azurerm_network_security_group" "bastion" {
   name                = "nsg-bastion-${var.environment}"
   location            = azurerm_resource_group.networking.location
